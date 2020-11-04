@@ -19,7 +19,7 @@ let $ = createSnippetWithJQuery(`
 
 const changeAllClassNames = () => {
   // Solution code here...
-  $($).children('li').attr('class', 'fruit');
+  $('li').addClass('class', 'fruit');
 };
 
 /* ------------------------------------------------------------------------------------------------
