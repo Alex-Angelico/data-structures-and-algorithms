@@ -30,10 +30,15 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 
 const sortBackwards = (arr) => {
   // Solution code here...
-  arr.sort((a, b) => {
-    return (a - b);
-  })
-
+  return arr.sort(function (a, b) {
+    if (a < b) {
+      return 1;
+    } else if (a > b) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,6 +53,15 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,6 +72,15 @@ Write a function named sortByLength that takes in an array of strings and return
 
 const sortByLength = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a.length > b.length) {
+      return 1;
+    } else if (a.length < b.length) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,6 +93,15 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return 1;
+    } else if (a.toLowerCase() < b.toLowerCase()) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,6 +119,15 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a.price > b.price) {
+      return 1;
+    } else if (a.price < b.price) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,6 +140,15 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (String(a).length > String(b).length) {
+      return 1;
+    } else if (String(a).length < String(b).length) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -121,6 +171,15 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a.lastName > b.lastName) {
+      return 1;
+    } else if (a.lastName < b.lastName) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,6 +194,27 @@ If two people have the same full name, the younger one should come first. Do not
 
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+    if (a.lastName > b.lastName) {
+      return 1;
+    } else if (a.lastName < b.lastName) {
+      return -1
+    } else {
+      if (a.firstName > b.firstName) {
+        return 1;
+      } else if (a.firstName < b.firstName) {
+        return -1
+      } else {
+        if (a.age > b.age) {
+          return 1;
+        } else if (a.age < b.age) {
+          return -1
+        } else {
+          return 0;
+        }
+      }
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,6 +241,29 @@ const meetings = [
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  let weekDayNum = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  return arr.sort(function (a, b) {
+
+    const weekDayNumberConversion = (weekDay) => {
+      for (let i = 0; i < weekDayNum.length; i++) {
+        if (weekDay === weekDayNum[i]) {
+          weekDay = i
+        }
+      }
+      return weekDay;
+    }
+
+    a = weekDayNumberConversion(a.dayOfWeek);
+    b = weekDayNumberConversion(b.dayOfWeek);
+
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -175,6 +278,32 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  return arr.sort(function (a, b) {
+
+    const meetingLengthCalc = (startTime, endTime) => {
+      return endTime - startTime;
+    }
+
+    const weekDayNumberConversion = (weekDay) => {
+      for (let i = 0; i < weekDayNum.length; i++) {
+        if (weekDay === weekDayNum[i]) {
+          weekDay = i
+        }
+      }
+      return weekDay;
+    }
+
+    a = meetingLengthCalc(a.start, a.end);
+    b = meetingLengthCalc(b.start, b.end);
+
+    if (a.start > b.start) {
+      return 1;
+    } else if (a.start < b.start) {
+      return -1
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -192,6 +321,7 @@ $ = createSnippetWithJQuery(`
 
 const addPearClass = () => {
   // Solution code here...
+  $('li.orange').next().addClass('pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -244,7 +374,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual(['alert', 'Alice', 'apple', 'Average']);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -253,7 +383,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should sort items by their price', () => {
     expect(sortByPrice([
       { name: 'Sweatshirt', price: 45 },
@@ -269,7 +399,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
@@ -277,7 +407,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -289,7 +419,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
@@ -310,7 +440,7 @@ xdescribe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -320,7 +450,7 @@ xdescribe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
@@ -333,7 +463,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should add a class of pear to the thrid li', () => {
     addPearClass();
     expect($('li:nth-child(3)').hasClass('pear')).toBe(true);
