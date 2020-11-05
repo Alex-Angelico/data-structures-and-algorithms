@@ -18,8 +18,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const changeAllClassNames = () => {
-  // Solution code here...
-  $('li').addClass('class', 'fruit');
+  $('li').addClass('fruit');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,6 +29,10 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 
 const sortBackwards = (arr) => {
   // Solution code here...
+  arr.sort((a, b) => {
+    return (a > b);
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,6 +47,9 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
+  // arr.sort((a, b) => {
+  //   return a.toUpperCase() > b.toUpperCase();
+  // })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +216,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should sort high-to-low the numbers in an array', () => {
     const nums = [3, 4, 5, 6, 7];
     expect(sortBackwards(nums)).toStrictEqual([7, 6, 5, 4, 3]);
