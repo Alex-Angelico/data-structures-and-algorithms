@@ -42,7 +42,7 @@ For example:
 const isNum = (input) => {
   // Solution code here...
   let regex = /[0-9]/;
-  console.log(regex.test(input));
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,8 +55,18 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
-  let regex = /\b/[A - Z *]\w* [a - z] *\S;
-  console.log(regex.test(str));
+  // let wordArray = [];
+  let regex = /\b[A-Z*]\w*/g;
+  var matchArray = str.match(regex);
+  if (matchArray === null) {
+    return [];
+  } else {
+    return matchArray;
+  }
+
+  // if (Boolean(str) === 'true') {
+  //   wordArray.push(str);
+  // }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,6 +77,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let cityArray = [];
+  let regex = /^[A-J]/;
+  arr.forEach(value => {
+    if (regex.test(value) === true) {
+      cityArray.push(value);
+    }
+  })
+  return cityArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +101,8 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+  let regex = /\b[Oo]\w*/;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -191,7 +211,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
