@@ -38,12 +38,14 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
   // Solution code here...
-  starWarsPeople.forEach = ((value) => {
-    let characterEntry = $('#template').clone();
-    $('main').append(characterEntry);
-    characterEntry.find('h2').text(value.name);
-    characterEntry.find('h3').text(value.height);
-    characterEntry.find('p').text(value.eye_color);
+  starWarsPeople.forEach(value => {
+    let characterEntry = $('#template').html();
+    let newSection = $('<section></section>');
+    newSection.html(characterEntry);
+    newSection.find('h2').text(value.name);
+    newSection.find('h3').text(value.height);
+    newSection.find('p').text(value.eye_color);
+    $('main').append(newSection);
   });
 }
 
@@ -61,10 +63,14 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
-  let result = [];
   // Solution code here...
+  let result = [];
+  for (let i = 0; i <= str.length; i++) {
+    let sharpen = str.slice(i);
+    result.push(sharpen);
+  }
   return result;
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -74,8 +80,14 @@ Write a function name wordsToCharList that, given a string as input, returns a n
 For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
-const wordsToCharList = (arr) => {
+const wordsToCharList = (str) => {
   // Solution code here...
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    let arrayLetter = str.charAt(i);
+    result.push(arrayLetter);
+  }
+  return result;
 };
 
 
@@ -123,6 +135,11 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    let item = recipe.ingredients[i].slice(recipe.ingredients[i].indexOf(' ') + 1);
+    item = item.slice(item.indexOf(' ') + 1);
+    result.push(item);
+  }
   return result;
 };
 
@@ -137,6 +154,10 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    let item = recipe.ingredients[i].split(' ').splice(2).join(' ');
+    result.push(item);
+  }
   return result;
 };
 
@@ -153,6 +174,10 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  for (let i = 0; i < recipe.steps.length; i++) {
+    let action = String(recipe.steps[i].split(' ').splice(0, 1));
+    result.push(action);
+  }
   return result;
 };
 
@@ -277,13 +302,13 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
     expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
