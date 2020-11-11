@@ -103,7 +103,6 @@ const getCourseKeys = (obj) => {
   return propertyArray;
 };
 
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -133,12 +132,17 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  let hasChildren = false;
   arr.forEach(value => {
-    // if (character = value.name) {
-    //   console.log(Object.values(value));
-    // }
-    console.log(Object.values(value));
+    if (character === value.name) {
+      if (Object.values(value.children)) {
+        console.log(Object.values(value.children));
+        hasChildren = true;
+        return true;
+      }
+    }
   })
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
