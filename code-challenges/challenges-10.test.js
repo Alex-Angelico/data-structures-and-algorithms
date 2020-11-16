@@ -99,16 +99,15 @@ const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
   let arrModExp = input.reduce((acc, curr) => {
     for (let i = 0; i < curr.length; i++) {
-      console.log('CURRENT VALUE: ', curr[i]);
-      // if (curr[i] % 5) { curr.splice(i, 1); }
-      if (!(curr[i] % 5)) { curr.splice(i, 1, (2 ** curr[i])); }
-      else { curr.splice(i, 1); }
+      if (typeof (curr[i]) !== 'number' || curr[i] % 5) { curr.splice(i, 1, 'nullValue'); }
+      else { curr.splice(i, 1, (2 ** curr[i])); }
     }
-    console.log('CURRENT ARRAY: ', curr);
+    for (let j = curr.length - 1; j >= 0; j--) {
+      if (curr[j] === 'nullValue') { curr.splice(j, 1); }
+    }
     acc.push(curr);
-    console.log('ACCUMULATOR ARRAY: ', acc);
+    return acc;
   }, [])
-  console.log('REDUCED ARRAY: ', arrModExp);
   return arrModExp;
 };
 
