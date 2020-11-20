@@ -72,20 +72,11 @@ const standardizePhoneNumbers = (arr) => {
   arr.reduce((acc, curr) => {
     let strArr = [];
     for (let i = 0; i < curr.length; i++) {
-      // console.log(typeof curr.charAt(i));
-      console.log(Number(curr.charAt(i)));
-      if (curr.charAt(i) === ' ') {
-        console.log('TRUE');
-      }
-      // if (Number(curr.charAt(i)) !== NaN && curr.charAt(i) !== ' ') {
-      if (typeof Number(curr.charAt(i)) === 'number') {
-        // console.log(curr[i]);
+      if (curr.charCodeAt(i) > 47 && curr.charCodeAt(i) < 58) {
         strArr.push(curr[i]);
       }
     }
-    console.log('RAW NUMBER ARRAY: ', strArr);
     let newPhoneNum = strArr.join('');
-    console.log(newPhoneNum);
     newArr.push(newPhoneNum);
   }, [])
   return newArr;
