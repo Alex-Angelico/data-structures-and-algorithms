@@ -6,4 +6,4 @@ Alex Angelico
 
 ## Table of Contents
 
-1. [Array Reverse](python/challenges/array_reverse)
+1. [Array Reverse](array_reverse)
