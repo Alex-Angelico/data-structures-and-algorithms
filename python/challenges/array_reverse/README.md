@@ -1,6 +1,6 @@
 # README
 
-## Perfect Sequence
+## Array Reverse
 
 ### Author: Alex Angelico, Anthony Beaver
 
