@@ -22,7 +22,7 @@ Space: O(N)
 
 ### Whiteboard
 
-![Whiteboard](assets/array-reverse.jpg)
+![Whiteboard](../assets/array-reverse.jpg)
 
 ### Change Log
 
