@@ -1,8 +1,6 @@
 # Python Code Challenges
 
-## Author
-
-Alex Angelico
+## Author: Alex Angelico
 
 ## Table of Contents
 
