@@ -5,3 +5,4 @@
 ## Table of Contents
 
 1. [Array Reverse](array_reverse)
+2. [Array Shift](array_shift)
