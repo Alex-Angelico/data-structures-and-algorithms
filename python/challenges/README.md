@@ -7,3 +7,4 @@
 1. [Array Reverse](array_reverse)
 2. [Array Shift](array_shift)
 3. [Array Binary Search](array_binary_search)
+4. [Linked List](../linked_list)
