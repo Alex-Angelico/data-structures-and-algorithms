@@ -70,6 +70,7 @@ Space: O(1)
 
 ### Change Log
 
-1.2: Completed Challenge 06 Functionality - 22 Dec 2020
+1.2.1: Completed Challenge 07 Functionality - 23 Dec 2020
+1.2: Completed Challenge 06 Functionality - 23 Dec 2020
 1.1: Partly implemented append, insertBefore, insertAfter, and kthFromEnd functions - 22 Dec 2020
 1.0: Completed Functionality - 19 Dec 2020
