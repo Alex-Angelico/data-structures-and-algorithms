@@ -35,7 +35,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def insert(self, value):
+    def insert(self, value=None):
         node = Node(value)
         node.next = self.head
         self.head = node
@@ -50,8 +50,8 @@ class LinkedList:
         return False
 
     def append(self, value):
-        current = self.head
         node = Node(value)
+        current = self.head
         if current == None:
             self.head = node
         else:
@@ -60,58 +60,45 @@ class LinkedList:
             current.next = node
 
     def insertBefore(self, value, newVal):
-        current = self.head
         node = Node(newVal)
-        # if current.data is value:
-        #     self.insert(newVal)
-        #     return
-
+        current = self.head
         if current == None:
             self.head = node
+        elif current.data is value:
+            self.insert(newVal)
         else:
             while current != None:
-                print(current.data)
                 if current.next.data == value:
-                    node.next = current.next.next
+                    node.next = current.next
                     current.next = node
-                    # current.next.next.data = value
-                    # bumpvalue = value
-                    # while current.next.next != None:
-                    #     bumpvalue = value
-                    #     value = current.next.next.data
-                    #     current.next.next.data = bumpvalue
-                    # current.next.next = Node(bumpvalue)
                     break
-                    # current = current.next
                 else:
                     current = current.next
-
-            # while node.next != None:
-
-        # current.next = node
-
-        # while current != None:
-        #     if current.next == None:
-        #         node = self.head
-        #         node.next = current
-        #         break
-        #     elif current.next.value == value:
-        #         node.next = current.next
-        #         curent.next = node
-        #         break
-        #     else:
-        #         current = current.next
 
     def insertAfter(self, value, newVal):
         node = Node(newVal)
         current = self.head
-        if self.head == None:
-            return 'List is empty.'
-        if self.head == value:
+        if current == None:
+            self.head = node
+        elif current.data is value:
+            node.next = current.next
             current.next = node
-        while current.next != value:
-            current = current.next
-        current.next.next = node
+        else:
+            while current.data != value:
+                current = current.next
+            node.next = current.next
+            current.next = node
+
+    def delete(self, value):
+        current = self.head
+        if current == None:
+            print('No nodes in list.')
+        elif current.data is value:
+            self.head = current.next
+        else:
+            while current.next.data != value:
+                current = current.next
+            current.next = current.next.next
 
     def kthFromEnd(self, k):
         node_list = []
@@ -132,7 +119,7 @@ class LinkedList:
         node_list = []
         node_output = ''
         while current != None:
-            node_list.append(f"{ {current.data} } -> ")
+            node_list.append(f'{ {current.data} } -> ')
             current = current.next
         node_list.append('NULL')
         for node in node_list:
@@ -158,11 +145,5 @@ llist.insert(918)
 llist.insert(45)
 
 
-# x = llist.kthFromEnd(7)
+# x = llist.kthFromEnd(25)
 # print(x)
-
-llist.insertBefore(454, 69)
-
-print(llist)
-
-# print('test:', llist_empty)
