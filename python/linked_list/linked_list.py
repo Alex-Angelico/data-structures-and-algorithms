@@ -107,12 +107,13 @@ class LinkedList:
         while current != None:
             node_list.append(current.data)
             current = current.next
+        print(len(node_list))
         if abs(k) > len(node_list):
             return 'Index value greater than list length.'
         if k < 0:
             return node_list[abs(k)]
         else:
-            return node_list[len(node_list) - k]
+            return node_list[len(node_list) - k - 1]
 
     def __str__(self):
         current = self.head
@@ -121,6 +122,7 @@ class LinkedList:
         while current != None:
             node_list.append(f'{ {current.data} } -> ')
             current = current.next
+        print(len(node_list))
         node_list.append('NULL')
         for node in node_list:
             node_output += node
@@ -129,21 +131,21 @@ class LinkedList:
 
 llist = LinkedList()
 llist.insert(23)
-llist.insert(98)
-llist.insert(415)
-llist.insert(123)
-llist.insert(981)
-llist.insert(454)
-llist.insert(213)
-llist.insert(198)
-llist.insert(455)
-llist.insert(253)
-llist.insert(978)
-llist.insert(45)
-llist.insert(203)
-llist.insert(918)
-llist.insert(45)
+# llist.insert(98)
+# llist.insert(415)
+# llist.insert(123)
+# llist.insert(981)
+# llist.insert(454)
+# llist.insert(213)
+# llist.insert(198)
+# llist.insert(455)
+# llist.insert(253)
+# llist.insert(978)
+# llist.insert(45)
+# llist.insert(203)
+# llist.insert(918)
+# llist.insert(45)
 
 
-# x = llist.kthFromEnd(25)
-# print(x)
+x = llist.kthFromEnd(0)
+print(x)

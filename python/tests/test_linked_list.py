@@ -105,3 +105,55 @@ def test_delete():
     actual = str(llist_m)
     expected = '{128} -> {10} -> {6} -> {7} -> {3} -> {74} -> {315} -> {76} -> {22} -> NULL'
     assert actual == expected
+
+
+llist_b = LinkedList()
+llist_b.insert(23)
+llist_b.insert(98)
+llist_b.insert(415)
+llist_b.insert(123)
+llist_b.insert(981)
+llist_b.insert(454)
+llist_b.insert(213)
+llist_b.insert(198)
+llist_b.insert(455)
+llist_b.insert(253)
+llist_b.insert(978)
+llist_b.insert(45)
+llist_b.insert(203)
+llist_b.insert(918)
+llist_b.insert(45)
+
+
+def test_kth_overindex():
+    actual = llist_b.kthFromEnd(25)
+    expected = 'Index value greater than list length.'
+    assert actual == expected
+
+
+def test_kth_equal():
+    actual = llist_b.kthFromEnd(14)
+    expected = 45
+    assert actual == expected
+
+
+def test_kth_negative():
+    actual = llist_b.kthFromEnd(-5)
+    expected = 253
+    assert actual == expected
+
+
+def test_kth_happy():
+    actual = llist_b.kthFromEnd(8)
+    expected = 455
+    assert actual == expected
+
+
+llist_single = LinkedList()
+llist_single.insert(13)
+
+
+def test_kth_single():
+    actual = llist_single.kthFromEnd(0)
+    expected = 13
+    assert actual == expected
