@@ -9,9 +9,9 @@ class Node:
     getNext(self): traverses to next node
     """
 
-    def __init__(self, value=None):
-        self.data = value
-        self.next = None
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
 
     def getData(self):
         return self.data
@@ -76,18 +76,14 @@ class LinkedList:
                     current = current.next
 
     def insertAfter(self, value, newVal):
-        node = Node(newVal)
         current = self.head
-        if current == None:
-            self.head = node
-        elif current.data is value:
-            node.next = current.next
-            current.next = node
-        else:
-            while current.data != value:
-                current = current.next
-            node.next = current.next
-            current.next = node
+        while current:
+            if current.data == value:
+                node = Node(newVal, current.next)
+                current.next = node
+                return
+            current = current.next
+        return 'Target value not in list.'
 
     def delete(self, value):
         current = self.head
@@ -101,19 +97,32 @@ class LinkedList:
             current.next = current.next.next
 
     def kthFromEnd(self, k):
-        node_list = []
-        current = self.head
+        # node_list = []
+        # current = self.head
 
-        while current != None:
-            node_list.append(current.data)
-            current = current.next
-        print(len(node_list))
-        if abs(k) > len(node_list):
-            return 'Index value greater than list length.'
-        if k < 0:
-            return node_list[abs(k)]
-        else:
-            return node_list[len(node_list) - k - 1]
+        # while current != None:
+        #     node_list.append(current.data)
+        #     current = current.next
+        # if abs(k) > len(node_list):
+        #     return 'Index value greater than list length.'
+        # if k < 0:
+        #     return node_list[abs(k)]
+        # else:
+        #     return node_list[len(node_list) - k - 1]
+        head_start = 0
+        follower = None
+        leader = self.head
+        while leader:
+            leader = leader.next
+            if follower:
+                follower = follower.next
+            elif head_start == k:
+                follower = self.head
+            else:
+                head_start += 1
+        if not follower:
+            return 'Target index value greater than list length.'
+        return follower.data
 
     def __str__(self):
         current = self.head
@@ -122,7 +131,6 @@ class LinkedList:
         while current != None:
             node_list.append(f'{ {current.data} } -> ')
             current = current.next
-        print(len(node_list))
         node_list.append('NULL')
         for node in node_list:
             node_output += node
