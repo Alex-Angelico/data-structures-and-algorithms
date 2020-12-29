@@ -127,7 +127,7 @@ llist_b.insert(45)
 
 def test_kth_overindex():
     actual = llist_b.kthFromEnd(25)
-    expected = 'Index value greater than list length.'
+    expected = 'Target index value greater than list length.'
     assert actual == expected
 
 
@@ -139,7 +139,8 @@ def test_kth_equal():
 
 def test_kth_negative():
     actual = llist_b.kthFromEnd(-5)
-    expected = 253
+    # expected = 253
+    expected = 'Target index value greater than list length.'
     assert actual == expected
 
 
