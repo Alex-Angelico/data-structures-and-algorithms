@@ -1,5 +1,5 @@
 from ll_zip import zipLists
-from code_challenges.linked_list.linked_list import Node, LinkedList
+from linked_list import Node, LinkedList
 
 llist_a, llist_b = LinkedList(), LinkedList()
 
@@ -22,5 +22,5 @@ llist_b.insert(45)
 
 def test_zip_lists_normal():
     actual = zipLists(llist_a, llist_b)
-    expected = None
-    assert actual == expected
+    expected = 213
+    assert actual.data == expected

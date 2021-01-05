@@ -25,4 +25,5 @@ Space: O(1)
 
 ### Change Log
 
+0.8: Function operable for list1 >= list2 - 05 Jan 2021
 0.3: Started basic loop functionality - 04 Jan 2021
