@@ -2,35 +2,58 @@ from linked_list import Node, LinkedList
 # code_challenges.linked_list
 
 
+# def zipLists(llist1, llist2):
+#     first_current = llist1.head
+#     print('FIRST_CURRENT: ', first_current.data)
+#     second_current = llist2.head
+#     print('SECOND_CURRENT: ', second_current.data)
+
+#     hold_next = []
+#     hold_next_next = []
+
+#     while first_current or second_current:
+#         if first_current.next.next:
+#             hold_next = first_current.next
+#             hold_next_next = first_current.next.next
+#             first_current.next = second_current
+#             # hold_next_next = first_current.next.next
+#             first_current.next.next = hold_next
+#             first_current = hold_next_next
+#             print(second_current.next.data)
+#             second_current = second_current.next
+#             print(second_current.data)
+#             # first_current = first_current.next.next
+
+#     return llist1
+
 def zipLists(llist1, llist2):
     first_current = llist1.head
-    print('FIRST_CURRENT: ', first_current.data)
     second_current = llist2.head
-    print('SECOND_CURRENT: ', second_current.data)
 
-    hold_next = []
-    hold_next_next = []
+    hold_first_next = []
+    hold_second_next = []
 
-    while first_current or second_current:
-        # if hold_next == []:
-        #     hold_next = first_current.next
-        #     print('HOLD TEST IF: ', hold_next)
-        #     # break
-        # else:
-        #     hold_next = hold_next_next
-        #     print('HOLD TEST ELSE: ', hold_next.data)
-        # print('THRESHOLD 0')
-        if first_current.next.next:
-            hold_next = first_current.next
-            hold_next_next = first_current.next.next
+    # while second_current:
+    #     hold_first_next = first_current.next
+    #     hold_second_next = second_current.next
+    #     first_current.next = second_current
+    #     first_current.next.next = hold_first_next
+    #     first_current = first_current.next.next
+    #     second_current = hold_second_next
+
+    while second_current:
+        if first_current:
+            hold_first_next = first_current.next
+            hold_second_next = second_current.next
             first_current.next = second_current
-            # hold_next_next = first_current.next.next
-            first_current.next.next = hold_next
-            second_current = second_current.next
+            first_current.next.next = hold_first_next
             first_current = first_current.next.next
-        print(llist1)
+            second_current = hold_second_next
+        else:
+            first_current = second_current
+            second_current = second_current.next
 
-    return llist1
+    return llist1.head
 
 
 llist_a, llist_b = LinkedList(), LinkedList()
