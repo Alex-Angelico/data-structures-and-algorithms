@@ -21,6 +21,7 @@ llist_b.insert(45)
 
 
 def test_zip_lists_normal():
-    actual = zipLists(llist_a, llist_b)
-    expected = 213
-    assert actual.data == expected
+    zipped_list = zipLists(llist_a, llist_b)
+    actual = str(zipped_list)
+    expected = '{213} -> {45} -> {454} -> {918} -> {981} -> {203} -> {123} -> {978} -> {415} -> {253} -> {98} -> {455} -> {23} -> {198} -> NULL'
+    assert actual == expected
