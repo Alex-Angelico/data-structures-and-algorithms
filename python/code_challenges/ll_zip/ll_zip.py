@@ -33,27 +33,21 @@ def zipLists(llist1, llist2):
     hold_first_next = []
     hold_second_next = []
 
-    # while second_current:
-    #     hold_first_next = first_current.next
-    #     hold_second_next = second_current.next
-    #     first_current.next = second_current
-    #     first_current.next.next = hold_first_next
-    #     first_current = first_current.next.next
-    #     second_current = hold_second_next
-
-    while second_current:
+    while first_current and second_current:
         if first_current:
             hold_first_next = first_current.next
             hold_second_next = second_current.next
             first_current.next = second_current
             first_current.next.next = hold_first_next
-            first_current = first_current.next.next
             second_current = hold_second_next
-        else:
-            first_current = second_current
-            second_current = second_current.next
+            if not first_current.next.next:
+                final_first = first_current
+            first_current = first_current.next.next
 
-    return llist1.head
+    if second_current:
+        final_first.next = second_current
+
+    return llist1
 
 
 llist_a, llist_b = LinkedList(), LinkedList()
