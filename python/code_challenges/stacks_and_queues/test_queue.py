@@ -1,5 +1,5 @@
 import pytest
-from stacks_and_queues.stacks_and_queues import Queue, InvalidOperationError
+from .stacks_and_queues import Node, Queue, InvalidOperationError
 
 
 def test_enqueue():
@@ -11,7 +11,11 @@ def test_enqueue():
 
 
 def test_dequeue():
-    pass
+    q = Queue()
+    q.enqueue("apple")
+    actual = q.dequeue()
+    expected = "apple"
+    assert actual == expected
 
 
 def test_peek():
@@ -25,8 +29,11 @@ def test_peek():
 
 
 def test_peek_when_empty():
-    # TODO it should raise an exception when peeking an empty queue
-    pass
+    q = Queue()
+    with pytest.raises(InvalidOperationError) as e:
+        q.peek()
+
+    assert str(e.value) == "Method not allowed on empty queue."
 
 
 def test_enqueue_one():
@@ -47,8 +54,11 @@ def test_enqueue_two():
 
 
 def test_dequeue_when_empty():
-    # TODO it should raise an exception when dequeueing an empty queue
-    pass
+    q = Queue()
+    with pytest.raises(InvalidOperationError) as e:
+        q.dequeue()
+
+    assert str(e.value) == "Method not allowed on empty queue."
 
 
 def test_dequeue_when_full():
@@ -61,15 +71,31 @@ def test_dequeue_when_full():
 
 
 def test_peek_post_dequeue():
-    # TODO it should return a new first value if peek is called after a dequeue
-    pass
+    q = Queue()
+    q.enqueue("apples")
+    q.enqueue("bananas")
+    q.dequeue()
+    actual = q.peek()
+    expected = "bananas"
+    assert actual == expected
 
 
 def test_is_empty():
-    #  TODO is empty should return true if no items were enqueued
-    pass
+    q = Queue()
+    actual = q.is_empty()
+    expected = True
+    assert actual == expected
 
 
 def test_exhausted():
-    #  TODO TODO is empty should return true after dequeueing all previously queued items
-    pass
+    q = Queue()
+    q.enqueue("apple")
+    q.enqueue("banana")
+    q.enqueue("cucumber")
+    q.dequeue()
+    q.dequeue()
+    q.dequeue()
+    q = Queue()
+    actual = q.is_empty()
+    expected = True
+    assert actual == expected
