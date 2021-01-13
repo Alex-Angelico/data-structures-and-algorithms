@@ -30,9 +30,6 @@ def zipLists(llist1, llist2):
     first_current = llist1.head
     second_current = llist2.head
 
-    hold_first_next = []
-    hold_second_next = []
-
     while first_current and second_current:
         if first_current:
             hold_first_next = first_current.next
