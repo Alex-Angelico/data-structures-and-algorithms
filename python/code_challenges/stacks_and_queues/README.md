@@ -31,4 +31,5 @@ Space: O(1)
 
 ### Change Log
 
+1.0: Functionality requirements complete - 13 Jan 2021
 0.1: Started building stack and queue classes - 12 Jan 2021
