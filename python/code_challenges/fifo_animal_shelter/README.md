@@ -12,7 +12,7 @@ Create an AnimalShelter class which holds only dog and cat objects using enqueue
 
 Input | Expected Output
 ----- | ---------------
-enqueue(animal) [cat]->[dog]->[dog], cat | [cat]->[dog]->[dog]->[cat]
+enqueue(animal) [dog]->[dog]->[cat], cat | [cat]->[dog]->[dog]->[cat]
 dequeue(pref) [cat]->[dog]->[dog]->[cat], dog | dog, [cat]->[dog]->[cat]
 
 ### Big O
@@ -26,4 +26,5 @@ Space: O(1)
 
 ### Change Log
 
+1.0: Functionality complete - 14 Jan 2021
 0.1: Started building AnimalShelter class - 13 Jan 2021
