@@ -32,4 +32,5 @@ Space: O(1)
 
 ### Change Log
 
-1.0: Created readme and whiteboard - 18 Jan 2021
+0.8: *Function design complete* - 21 Jan 2021
+0.05: *Created readme and whiteboard* - 18 Jan 2021
