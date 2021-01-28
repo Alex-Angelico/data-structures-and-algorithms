@@ -1,8 +1,8 @@
-def multi_bracket_validation(input):
-    open_brackets = ['(', '[', '{']
-    close_brackets = [')', ']', '}']
+def multi_bracket_validation(string):
+    open_brackets = ('(', '[', '{')
+    close_brackets = (')', ']', '}')
     brackets = [
-        character for character in input if character in open_brackets or character in close_brackets]
+        character for character in string if character in open_brackets or character in close_brackets]
 
     # First-glance fail conditions
     if len(brackets) < 2 or brackets[0] in close_brackets or brackets[:-1] in open_brackets:

@@ -1,25 +1,15 @@
 import pytest
-import .multi_bracket_validation.multi_bracket_validation
+from multi_bracket_validation.multi_bracket_validation import multi_bracket_validation
 
 
-@pytest.mark.parameterize(
+@pytest.mark.parametrize(
     "test_input_true,expected",
     [
-        '{}',
-        '{}(){}',
-        '()[[Extra Characters]]',
-        '(){}[[]]',
-        '{}{Code}[Fellows](())',
-    ]
-)
-@pytest.mark.parameterize(
-    "test_input_false,expected",
-    [
-        '[({}]',
-        '(](',
-        '{(})',
-        '{',
-        ')',
+        ('{}', True),
+        ('{}(){}', True),
+        ('()[[Extra Characters]]', True),
+        ('(){}[[]]', True),
+        ('{}{Code}[Fellows](())', True)
     ]
 )
 def test_true(test_input_true, expected):
@@ -27,6 +17,16 @@ def test_true(test_input_true, expected):
     assert actual == expected
 
 
+@pytest.mark.parametrize(
+    "test_input_false,expected",
+    [
+        ('[({}]', False),
+        ('(](', False),
+        ('{(})', False),
+        ('{', False),
+        (')', False)
+    ]
+)
 def test_false(test_input_false, expected):
     actual = multi_bracket_validation(test_input_false)
     assert actual == expected
