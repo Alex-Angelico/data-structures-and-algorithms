@@ -4,6 +4,17 @@ class Node:
         self.left = left
         self.right = right
 
+    @property
+    def value(self):
+        return self.value
+
+    @value.setter
+    def value(self, input):
+        if not str(input).isnumeric():
+            raise Exception("Numeric value required for node value.")
+        else:
+            self.value = input
+
 
 class BinaryTree:
     def __init__(self, root=None):
@@ -53,30 +64,32 @@ class BinaryTree:
 
 
 class BinarySearchTree(BinaryTree):
-    # def add(self, value):
-    #     if value < self.root.value:
+    def add(self, value):
+        new_leaf = Node(value)
+        current = self.root
+        while current.left or current.right:
+            if current.left and value < current.value:
+                current = current.left
+            if current.right and value > current.value:
+                current = current.right
+            if value == current.value:
+                return 'Tree already contains this value.'
+
+        if value < current.value:
+            current.left = new_leaf
+        if value > current.value:
+            current.right = new_leaf
 
     def contains(self, value):
-        presence = False
-
-        def traverse(root):
-            # presence = False
-            print(value, root.value)
-            if value == root.value:
-                presence = True
-                return presence
-            if value < root.value and root.left:
-                traverse(root.left)
-            if value > root.value and root.right:
-                traverse(root.right)
-
-        traverse(self.root)
-        # if value == self.root.value:
-        #     return True
-        # else:
-        #     return False
-        return presence
-        # return False
+        current = self.root
+        while current.left or current.right:
+            if value < current.value:
+                current = current.left
+            if value > current.value:
+                current = current.right
+            if value == current.value:
+                return True
+        return False
 
 
 if __name__ == '__main__':
@@ -97,17 +110,9 @@ if __name__ == '__main__':
     c.right = g
     tree.root = a
 
-print(tree.preOrder())
-print(tree.inOrder())
-print(tree.postOrder())
+    tree.add(155)
+    print(tree.contains(155))
 
-# tree.add(1)
-print(tree.contains(34))
-
-# a = Node("A")
-# b = Node("B")
-# c = Node("C")
-# d = Node("D")
-# e = Node("E")
-# f = Node("F")
-# g = Node("G")
+    print(tree.preOrder())
+    print(tree.inOrder())
+    print(tree.postOrder())
