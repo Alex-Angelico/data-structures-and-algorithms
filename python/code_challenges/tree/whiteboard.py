@@ -30,3 +30,73 @@ Space: O(1)
 8. If no node containing the provided value exists, return a custom error message.
 
 # Pseudocode
+
+
+class Node
+
+
+define constructor with value, left, and right properties(all defaulting to None)
+
+
+class BinaryTree
+
+
+define construtor with root property defaulting to None
+
+# define preOrder method
+#   create a node_list variable that is an empty list
+#   define traverse helper function that accepts a root node
+#     append the root value to node_list
+#       check if root.left is not None
+#         traverse(root.left)
+
+#       check if root.right is not None
+#         traverse(root.right)
+
+#   traverse(self.root)
+#   return node_list
+
+# define inOrder method
+#   create a node_list variable that is an empty list
+#   define traverse helper function that accepts a root node
+
+#        check if root.left is not None
+#           traverse(root.left)
+#         append the root value to node_list
+
+#         check if root.right is not None
+#           traverse(root.right)
+
+#   traverse(self.root)
+#   return node_list
+
+# define postOrder method
+#   create a node_list variable that is an empty list
+#   define traverse helper function that accepts a root node
+
+#        check if root.left is not None
+#           traverse(root.left)
+
+#         check if root.right is not None
+#           traverse(root.right)
+#         append the root value to node_list
+
+#   traverse(self.root)
+#   return node_list
+
+
+# class BinarySearchTree (subclass of BinaryTree)
+
+#    define add method with value property
+#       try
+#         assert that an numerical input was passed as an argument to value
+#       except
+#         return ValueError
+#       create a new Node with the value property
+#
+#    define add method with value property
+#       try
+#         assert that an numerical input was passed as an argument to value
+#       except
+#         return ValueError
+#
