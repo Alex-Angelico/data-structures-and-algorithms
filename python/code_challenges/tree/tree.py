@@ -53,22 +53,41 @@ class BinaryTree:
 
 
 class BinarySearchTree(BinaryTree):
-    def add(self, value):
-        print('added')
+    # def add(self, value):
+    #     if value < self.root.value:
 
     def contains(self, value):
-        print('contains')
+        presence = False
+
+        def traverse(root):
+            # presence = False
+            print(value, root.value)
+            if value == root.value:
+                presence = True
+                return presence
+            if value < root.value and root.left:
+                traverse(root.left)
+            if value > root.value and root.right:
+                traverse(root.right)
+
+        traverse(self.root)
+        # if value == self.root.value:
+        #     return True
+        # else:
+        #     return False
+        return presence
+        # return False
 
 
 if __name__ == '__main__':
     tree = BinarySearchTree()
-    a = Node("A")
-    b = Node("B")
-    c = Node("C")
-    d = Node("D")
-    e = Node("E")
-    f = Node("F")
-    g = Node("G")
+    a = Node(28)
+    b = Node(17)
+    c = Node(34)
+    d = Node(4)
+    e = Node(21)
+    f = Node(33)
+    g = Node(67)
 
     a.left = b
     a.right = c
@@ -82,5 +101,13 @@ print(tree.preOrder())
 print(tree.inOrder())
 print(tree.postOrder())
 
-tree.add(1)
-tree.contains(1)
+# tree.add(1)
+print(tree.contains(34))
+
+# a = Node("A")
+# b = Node("B")
+# c = Node("C")
+# d = Node("D")
+# e = Node("E")
+# f = Node("F")
+# g = Node("G")
