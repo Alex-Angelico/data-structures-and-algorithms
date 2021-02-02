@@ -62,6 +62,14 @@ class BinaryTree:
         traverse(self.root)
         return node_list
 
+    def find_maximum_value(self):
+        max_value = 0
+        tree_values = self.preOrder()
+        for value in tree_values:
+            if value > max_value:
+                max_value = value
+        return max_value
+
 
 class BinarySearchTree(BinaryTree):
     def add(self, value):

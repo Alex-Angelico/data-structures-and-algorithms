@@ -48,3 +48,7 @@ def test_inOrder(test_tree):
 
 def test_postOrder(test_tree):
     assert test_tree.postOrder() == [4, 21, 17, 33, 67, 34, 28]
+
+
+def test_find_maximum_value(test_tree):
+    assert test_tree.find_maximum_value() == 67
