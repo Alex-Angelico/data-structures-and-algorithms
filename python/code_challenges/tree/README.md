@@ -25,4 +25,5 @@ Space: O(1)
 
 ### Change Log
 
+1.0: *Classes and testing complete* - 01 Feb 2021
 0.05: *Created readme and whiteboard* - 31 Jan 2021
