@@ -21,7 +21,13 @@ Space: O(1)
 
 ### Whiteboard
 
-![Challenge 15 Whiteboard](whiteboard.py)
+#### Challenge 15
+
+![Challenge 15 Whiteboard](whiteboard-15.py)
+
+#### Challenge 16
+
+![Challenge 16 Whiteboard](whiteboard-16.py)
 
 ### Change Log
 
