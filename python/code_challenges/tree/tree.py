@@ -97,6 +97,7 @@ class BinarySearchTree(BinaryTree):
                 current = current.right
             if value == current.value:
                 return True
+            break
 
         return False
 
@@ -112,7 +113,7 @@ if __name__ == '__main__':
     tree.add(33)
     tree.add(67)
 
-    print(tree.contains(4))
+    print(tree.contains(29))
 
     print(tree.preOrder())
     print(tree.inOrder())
