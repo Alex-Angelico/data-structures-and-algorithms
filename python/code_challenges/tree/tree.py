@@ -4,16 +4,16 @@ class Node:
         self.left = left
         self.right = right
 
-    @property
-    def value(self):
-        return self.value
+    # @property
+    # def value(self):
+    #     return self.value
 
-    @value.setter
-    def value(self, input):
-        if not str(input).isnumeric():
-            raise Exception("Numeric value required for node value.")
-        else:
-            self.value = input
+    # @value.setter
+    # def value(self, input):
+    #     if not str(input).isnumeric():
+    #         raise Exception("Numeric value required for node value.")
+    #     else:
+    #         self.value = input
 
 
 class BinaryTree:
@@ -67,13 +67,18 @@ class BinarySearchTree(BinaryTree):
     def add(self, value):
         new_leaf = Node(value)
         current = self.root
-        while current.left or current.right:
+        if current == None:
+            self.root = new_leaf
+            return
+
+        while current:
             if current.left and value < current.value:
                 current = current.left
             if current.right and value > current.value:
                 current = current.right
             if value == current.value:
                 return 'Tree already contains this value.'
+            break
 
         if value < current.value:
             current.left = new_leaf
@@ -82,36 +87,32 @@ class BinarySearchTree(BinaryTree):
 
     def contains(self, value):
         current = self.root
-        while current.left or current.right:
-            if value < current.value:
+        if value == current.value:
+            return True
+
+        while current:
+            if current.left and value < current.value:
                 current = current.left
-            if value > current.value:
+            if current.right and value > current.value:
                 current = current.right
             if value == current.value:
                 return True
+
         return False
 
 
 if __name__ == '__main__':
     tree = BinarySearchTree()
-    a = Node(28)
-    b = Node(17)
-    c = Node(34)
-    d = Node(4)
-    e = Node(21)
-    f = Node(33)
-    g = Node(67)
 
-    a.left = b
-    a.right = c
-    b.left = d
-    b.right = e
-    c.left = f
-    c.right = g
-    tree.root = a
+    tree.add(28)
+    tree.add(17)
+    tree.add(34)
+    tree.add(4)
+    tree.add(21)
+    tree.add(33)
+    tree.add(67)
 
-    tree.add(155)
-    print(tree.contains(155))
+    print(tree.contains(4))
 
     print(tree.preOrder())
     print(tree.inOrder())
