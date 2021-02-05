@@ -1,3 +1,6 @@
+# from stacks_and_queues import Queue
+
+
 class Node:
     def __init__(self, value=None, left=None, right=None):
         self.value = value
@@ -14,6 +17,51 @@ class Node:
     #         raise Exception("Numeric value required for node value.")
     #     else:
     #         self.value = input
+
+
+class QueueNode:
+    def __init__(self, value=None, next=None):
+        self.value = value
+        self.next = next
+
+    def getValue(self):
+        return self.value
+
+    def getNext(self):
+        return self.next
+
+
+class Queue:
+    def __init__(self, front=None, rear=None):
+        self.front = front
+        self.rear = rear
+
+    def enqueue(self, value):
+        node = QueueNode(value)
+        if self.front is None:
+            self.front = node
+            self.rear = node
+        else:
+            self.rear.next = node
+            self.rear = node
+
+    def dequeue(self):
+        if self.is_empty():
+            raise InvalidOperationError('Method not allowed on empty queue.')
+        node = self.front
+        self.front = self.front.next
+        return node.value
+
+    def is_empty(self):
+        if self.front is None:
+            return True
+        else:
+            return False
+
+    def peek(self):
+        if self.is_empty():
+            raise InvalidOperationError('Method not allowed on empty queue.')
+        return self.front.value
 
 
 class BinaryTree:
@@ -64,22 +112,23 @@ class BinaryTree:
 
     def breadthFirst(self):
         node_list = []
-        node_list.append(self.root.value)
+        node_queue = Queue()
+        current = self.root
+        if current == None:
+            return 'Empty tree'
 
-        def traverse(root):
-            if root.left:
-                node_list.append(root.left.value)
+        node_queue.enqueue(current)
 
-            if root.right:
-                node_list.append(root.right.value)
+        while current:
+            current = node_queue.dequeue()
+            node_list.append(current.value)
+            if current.left:
+                node_queue.enqueue(current.left)
+            if current.right:
+                node_queue.enqueue(current.right)
+            if node_queue.is_empty():
+                break
 
-            if root.left:
-                traverse(root.left)
-
-            if root.right:
-                traverse(root.right)
-
-        traverse(self.root)
         return node_list
 
     def find_maximum_value(self):

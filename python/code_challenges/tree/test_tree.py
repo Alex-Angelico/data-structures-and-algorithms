@@ -1,5 +1,5 @@
 import pytest
-from .tree import Node, BinaryTree, BinarySearchTree
+from .tree import Node, BinaryTree, BinarySearchTree, QueueNode, Queue
 
 
 @pytest.fixture(scope='function')
@@ -54,7 +54,7 @@ def test_postOrder(test_tree):
 
 
 def test_breadthFirst(test_tree):
-    assert test_tree.breadthFirst() == [28, 17, 34, 4, 21, 2, 16, 33, 67, 155]
+    assert test_tree.breadthFirst() == [28, 17, 34, 4, 21, 33, 67, 2, 16, 155]
 
 
 def test_find_maximum_value(test_tree):
