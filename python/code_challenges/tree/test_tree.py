@@ -13,6 +13,9 @@ def test_tree():
     tree.add(21)
     tree.add(33)
     tree.add(67)
+    tree.add(155)
+    tree.add(16)
+    tree.add(2)
 
     return tree
 
@@ -39,16 +42,20 @@ def test_children():
 
 
 def test_preOrder(test_tree):
-    assert test_tree.preOrder() == [28, 17, 4, 21, 34, 33, 67]
+    assert test_tree.preOrder() == [28, 17, 4, 2, 16, 21, 34, 33, 67, 155]
 
 
 def test_inOrder(test_tree):
-    assert test_tree.inOrder() == [4, 17, 21, 28, 33, 34, 67]
+    assert test_tree.inOrder() == [2, 4, 16, 17, 21, 28, 33, 34, 67, 155]
 
 
 def test_postOrder(test_tree):
-    assert test_tree.postOrder() == [4, 21, 17, 33, 67, 34, 28]
+    assert test_tree.postOrder() == [2, 16, 4, 21, 17, 33, 155, 67, 34, 28]
+
+
+def test_breadthFirst(test_tree):
+    assert test_tree.breadthFirst() == [28, 17, 34, 4, 21, 2, 16, 33, 67, 155]
 
 
 def test_find_maximum_value(test_tree):
-    assert test_tree.find_maximum_value() == 67
+    assert test_tree.find_maximum_value() == 155
