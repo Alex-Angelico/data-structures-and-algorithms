@@ -14,6 +14,10 @@ Create a binary tree class with traversal methods, and a binary search tree subc
 
 Extend the binary tree class with a funciton that returns the highest value in a tree.
 
+#### Challenge 17
+
+Extend the binary tree class with a funciton that traverses a tree object using the breadth-first approach.
+
 ### Inputs and Expected Outputs
 
 #### Challenge 15
@@ -28,6 +32,12 @@ Input | Expected Output
 ----- | ---------------
 {2} <---> {1} <---> {3} | 3
 
+#### Challenge 17
+
+Input | Expected Output
+----- | ---------------
+{2} <---> {1} <---> {3} | [1, 2, 3]
+
 ### Big O
 
 #### Challenge 15
@@ -36,6 +46,11 @@ Time: O(N)
 Space: O(1)
 
 #### Challenge 16
+
+Time: O(N)  
+Space: O(1)
+
+#### Challenge 17
 
 Time: O(N)  
 Space: O(1)
@@ -50,8 +65,13 @@ Space: O(1)
 
 ![Challenge 16 Whiteboard](whiteboard-16.py)
 
+#### Challenge 17
+
+![Challenge 17 Whiteboard](whiteboard-17.py)
+
 ### Change Log
 
+1.2: *Breadth first function and testing omplete* - 04 Feb 2021
 1.1: *Max value function and testing complete* - 01 Feb 2021
 1.0: *Classes and testing complete* - 01 Feb 2021
 0.05: *Created readme and whiteboard* - 31 Jan 2021

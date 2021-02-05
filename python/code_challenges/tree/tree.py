@@ -62,6 +62,26 @@ class BinaryTree:
         traverse(self.root)
         return node_list
 
+    def breadthFirst(self):
+        node_list = []
+        node_list.append(self.root.value)
+
+        def traverse(root):
+            if root.left:
+                node_list.append(root.left.value)
+
+            if root.right:
+                node_list.append(root.right.value)
+
+            if root.left:
+                traverse(root.left)
+
+            if root.right:
+                traverse(root.right)
+
+        traverse(self.root)
+        return node_list
+
     def find_maximum_value(self):
         max_value = 0
         tree_values = self.preOrder()
@@ -80,13 +100,18 @@ class BinarySearchTree(BinaryTree):
             return
 
         while current:
-            if current.left and value < current.value:
-                current = current.left
-            if current.right and value > current.value:
-                current = current.right
+            if value < current.value:
+                if current.left:
+                    current = current.left
+                else:
+                    break
+            if value > current.value:
+                if current.right:
+                    current = current.right
+                else:
+                    break
             if value == current.value:
                 return 'Tree already contains this value.'
-            break
 
         if value < current.value:
             current.left = new_leaf
@@ -99,13 +124,18 @@ class BinarySearchTree(BinaryTree):
             return True
 
         while current:
-            if current.left and value < current.value:
-                current = current.left
-            if current.right and value > current.value:
-                current = current.right
+            if value < current.value:
+                if current.left:
+                    current = current.left
+                else:
+                    break
+            if value > current.value:
+                if current.right:
+                    current = current.right
+                else:
+                    break
             if value == current.value:
                 return True
-            break
 
         return False
 
@@ -120,9 +150,13 @@ if __name__ == '__main__':
     tree.add(21)
     tree.add(33)
     tree.add(67)
+    tree.add(155)
+    tree.add(16)
+    tree.add(2)
 
     print(tree.contains(29))
 
     print(tree.preOrder())
     print(tree.inOrder())
     print(tree.postOrder())
+    print(tree.breadthFirst())
