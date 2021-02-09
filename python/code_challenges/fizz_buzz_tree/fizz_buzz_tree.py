@@ -9,42 +9,40 @@ class K_AryTree:
         self.root = root
 
     def fizz_buzz_tree(self):
-
+        fb_node_values = []
         if self.root:
-            if not self.root.value % 3 and not self.root.value % 5:
-                self.root.value = 'FizzBuzz'
-            elif not self.root.value % 3:
-                self.root.value = 'Fizz'
-            elif not self.root.value % 5:
-                self.root.value = 'Buzz'
-            else:
-                self.root.value = str(self.root.value)
-            fizz_buzz_tree = K_AryTree(self.root)
+            fizz_buzz_tree = K_AryTree(K_AryTree.fizz_buzz_eval(self.root))
         else:
             return 'Empty tree'
 
         def traverse(node):
+            fb_node_values.append(node.value)
             child_values = []
             new_node = K_node(node.value)
 
-            for number, child in enumerate(node.children):
-                if not child.value % 3 and not child.value % 5:
-                    node.children[number].value = 'FizzBuzz'
-                elif not child.value % 3:
-                    node.children[number].value = 'Fizz'
-                elif not child.value % 5:
-                    node.children[number].value = 'Buzz'
-                else:
-                    node.children[number].value = str(child.value)
-
-                child_values.append(node.children[number].value)
+            for child in node.children:
+                child = K_AryTree.fizz_buzz_eval(child)
+                child_values.append(child.value)
                 traverse(child)
 
             for i in range(len(child_values)):
                 new_node.children.append(K_node(child_values[i]))
 
         traverse(self.root)
-        return fizz_buzz_tree
+        return fizz_buzz_tree, fb_node_values
+
+    @staticmethod
+    def fizz_buzz_eval(item):
+        if not item.value % 3 and not item.value % 5:
+            item.value = 'FizzBuzz'
+        elif not item.value % 3:
+            item.value = 'Fizz'
+        elif not item.value % 5:
+            item.value = 'Buzz'
+        else:
+            item.value = str(item.value)
+
+        return item
 
 
 if __name__ == '__main__':
@@ -79,13 +77,24 @@ if __name__ == '__main__':
     node_delta.children.append(node_mike)
 
     test_K_tree = K_AryTree(node_alpha)
-    new_tree = test_K_tree.fizz_buzz_tree()
-
-    print(new_tree)
+    print(test_K_tree)
     print(f"""
-    {new_tree.root.value}
-    {new_tree.root.children[0].value} {new_tree.root.children[1].value} {new_tree.root.children[2].value}
-    {new_tree.root.children[0].children[0].value} {new_tree.root.children[0].children[1].value} {new_tree.root.children[0].children[2].value}
-    {new_tree.root.children[1].children[0].value} {new_tree.root.children[1].children[1].value} {new_tree.root.children[1].children[2].value}
-    {new_tree.root.children[2].children[0].value} {new_tree.root.children[2].children[1].value} {new_tree.root.children[2].children[2].value}
+    {test_K_tree.root.value}
+    {test_K_tree.root.children[0].value} {test_K_tree.root.children[1].value} {test_K_tree.root.children[2].value}
+    {test_K_tree.root.children[0].children[0].value} {test_K_tree.root.children[0].children[1].value} {test_K_tree.root.children[0].children[2].value}
+    {test_K_tree.root.children[1].children[0].value} {test_K_tree.root.children[1].children[1].value} {test_K_tree.root.children[1].children[2].value}
+    {test_K_tree.root.children[2].children[0].value} {test_K_tree.root.children[2].children[1].value} {test_K_tree.root.children[2].children[2].value}
     """)
+
+    fb_tree, fb_node_values = test_K_tree.fizz_buzz_tree()
+
+    print(fb_tree)
+    print(f"""
+    {fb_tree.root.value}
+    {fb_tree.root.children[0].value} {fb_tree.root.children[1].value} {fb_tree.root.children[2].value}
+    {fb_tree.root.children[0].children[0].value} {fb_tree.root.children[0].children[1].value} {fb_tree.root.children[0].children[2].value}
+    {fb_tree.root.children[1].children[0].value} {fb_tree.root.children[1].children[1].value} {fb_tree.root.children[1].children[2].value}
+    {fb_tree.root.children[2].children[0].value} {fb_tree.root.children[2].children[1].value} {fb_tree.root.children[2].children[2].value}
+    """)
+
+    print(fb_node_values)
