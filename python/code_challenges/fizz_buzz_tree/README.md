@@ -28,4 +28,5 @@ Space: O(N)
 
 ### Change Log
 
+1.0: *fizz_buzz_tree method refactored; testing complete* - 09 Feb 2021
 0.85: *Classes and methods complete* - 08 Feb 2021
