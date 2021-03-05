@@ -1,6 +1,6 @@
 # Documenting and Explaining Insertion Sort
 
-Insertion sort is a sorting algorithm that uses a nested for -> while loop to iterate through the elements in a list and check each one against preceding elements to compare which is larger. The traversal holds a given element until it is larger than the preceing element, gradually building an ascending sorted list from the front.
+Insertion sort is a sorting algorithm that uses a nested for -> while loop to iterate through the elements in a list and check each one against preceding elements to compare which is larger. The traversal holds a given element until it is larger than the preceing element, gradually building an ascending sorted list from the front. The new list is then returned at the end of the function.
 
 ## Pseudocode
 ```
