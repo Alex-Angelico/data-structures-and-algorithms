@@ -1,8 +1,9 @@
 # Documenting and Explaining Merge Sort
 
-Merge sort is a sorting algorithm that uses recursion with a while loop in the helper function to first break a list into halves, and then iterate through the halves, rearranging their items in ascending order. The rearranged halves are then merged. Merge sort allows for a given list to be mutated in place.
+Merge sort is a sorting algorithm that uses recursion with a while loop in the helper function to first break a list into halves, and then iterate through the halves, rearranging their items in ascending order. The rearranged halves are then merged according to whichever half was completed first.
 
 ## Pseudocode
+
 ```
 ALGORITHM Mergesort(arr)
     DECLARE n <-- arr.length
@@ -44,3 +45,13 @@ ALGORITHM Merge(left, right, arr)
 `[8,4,23,42,16,15]`
 
 ## Trace
+
+left | right | new list
+-----|-------|---------
+[4] | [23] | [4, 23]
+[8] | [4, 23] | [4, 8, 23]
+[16] | [15] | [15, 16]
+[42] | [15, 16] | [15, 16, 42]
+[4, 8, 23] | [15, 16, 42] | [4, 8, 15, 16, 23, 42]
+
+Sorted list: `[4, 8, 15, 16, 23, 42]`
