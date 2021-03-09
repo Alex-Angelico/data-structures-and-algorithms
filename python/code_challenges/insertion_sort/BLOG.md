@@ -1,6 +1,6 @@
 # Documenting and Explaining Insertion Sort
 
-Insertion sort is a sorting algorithm that uses a nested for -> while loop to iterate through the elements in a list and check each one against preceding elements to compare which is larger. The traversal holds a given element until it is larger than the preceing element, gradually building an ascending sorted list from the front. The new list is then returned at the end of the function.
+Insertion sort is a sorting algorithm that uses a nested for -> while loop to iterate through the elements in a list and check each one against preceding elements to compare which is larger. The traversal holds a given element until it is larger than the preceing element, gradually building an ascending sorted list from the front.
 
 ## Pseudocode
 ```
@@ -26,25 +26,12 @@ InsertionSort(int[] arr)
 
 ### i = 1
 
-i | j | temp
---|---|-----
-1 | 0 | 4
+i | j | temp | list
+--|---|------|-----
+1 | -1 | 4 | [4, 8, 23, 42, 16, 15]
+2 | 1 | 23 | [4, 8, 23, 42, 16, 15]
+3 | 2 | 42 | [4, 8, 23, 42, 16, 15]
+4 | 1 | 16 | [4, 8, 16, 23, 42, 15]
+5 | 1 | 15 | [4, 8, 15, 16, 23, 42]
 
-
- j i
-[8,4,23,42,16,15]
-   ^
-  temp
-   j i
-[4,8,23,42,16,15]
-     ^
-    temp 
-
-## Trace
-
-### i = 2
-
-i | j | temp
---|---|-----
-1 | 0 | 4
-2 | 1 | 23
+Sorted list: `[4, 8, 15, 16, 23, 42]`
