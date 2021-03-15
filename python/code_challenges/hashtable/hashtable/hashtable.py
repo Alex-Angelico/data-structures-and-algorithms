@@ -3,7 +3,7 @@ from hashtable.linked_list import LinkedList
 
 class Hashtable:
     def __init__(self, size=128):
-        self.size = size
+        self._size = size
         # None can be replaced with LinkedList() at higher initial setup cost
         self._buckets = size * [None]
 
@@ -13,10 +13,10 @@ class Hashtable:
             sum += ord(character)
 
         primed = sum * 599
-        index = primed % self.size
+        index = primed % self._size
         return index
 
-    def set(self, key, value):
+    def add(self, key, value):
         hashed_key_index = self._hash(key)
         if not self._buckets[hashed_key_index]:
             self._buckets[hashed_key_index] = LinkedList()
@@ -32,9 +32,9 @@ class Hashtable:
                     return current.data[1]
                 current = current.next
         else:
-            return 'Bucket is empty.'
+            return None
 
-    def contains(self):
+    def contains(self, key):
         requested_key = self._hash(key)
         if self._buckets[requested_key]:
             current = self._buckets[requested_key].head
