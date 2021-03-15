@@ -22,4 +22,5 @@ Space: O(1)
 
 ### Change Log
 
+1.0: *Challenge complete.* - 15 Mar 2021
 0.7: *Most functions and testing complete.* - 14 Mar 2021
