@@ -19,6 +19,10 @@ Input | Expected Output
 Time: O(1)  
 Space: O(1)
 
+### Whiteboard
+
+![Challenge 31 Whiteboard](../../assets/repeated-word.jpg)
+
 ### Change Log
 
 1.0: *Challenge complete.* - 15 Mar 2021

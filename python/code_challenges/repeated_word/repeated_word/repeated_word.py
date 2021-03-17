@@ -1,4 +1,4 @@
-from repeated_word.linked_list import LinkedList
+from linked_list import LinkedList
 
 
 class Hashtable:
@@ -56,6 +56,8 @@ def repeat_checker(string, hashtable):
             word_list[i] = ''.join(word_list[i])
         if not len(word_list[i]):
             word_list.pop(i)
+
+    print(word_list)
 
     for word in word_list:
         if hashtable.contains(word):
