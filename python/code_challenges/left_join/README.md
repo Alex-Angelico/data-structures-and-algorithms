@@ -22,7 +22,7 @@ Space: O(N)
 
 ### Whiteboard
 
-![Challenge 33 Whiteboard](left-join.md)
+[Challenge 33 Whiteboard](left-join.md)
 
 ### Change Log
 
