@@ -24,6 +24,8 @@ Space: O(N)
 
 [Challenge 33 Whiteboard](left-join.md)
 
+kdajndjknasjkdmjkakjjkdnasjknjkn
+
 ### Change Log
 
 1.0: *Challenge complee* - 22 Mar 2021
