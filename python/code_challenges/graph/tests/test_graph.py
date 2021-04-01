@@ -71,7 +71,7 @@ def test_get_neighbors():
     graph.add_edge(a, b)
     graph.add_edge(a, c, 2)
     actual = graph.get_neighbors(a)
-    expected = [{'b': 1}, {'c': 2}]
+    expected = [{'Value': 'b', 'Weight': 1}, {'Value': 'c', 'Weight': 2}]
     assert actual == expected
 
 
@@ -87,7 +87,7 @@ def test_single_node_edge():
     a = graph.add_node('a')
     graph.add_edge(a, a)
     actual = graph.get_neighbors(a)
-    expected = [{'a': 1}]
+    expected = [{'Value': 'a', 'Weight': 1}]
     assert actual == expected
 
 

@@ -26,7 +26,7 @@ class Graph:
     def get_neighbors(self, vertex):
         if vertex not in self._adjacency_list:
             raise KeyError('Vertex not in graph')
-        return [{neighbor.vertex.value: neighbor.weight} for neighbor in self._adjacency_list[vertex]]
+        return [{'Value': neighbor.vertex.value, 'Weight': neighbor.weight} for neighbor in self._adjacency_list[vertex]]
 
     def size(self):
         return len(self._adjacency_list)
@@ -88,5 +88,5 @@ if __name__ == '__main__':
     graph.add_edge(e, g)
     graph.add_edge(f, h)
     print(graph.get_neighbors(a))
-    print(a, b)
-    print(graph.breadth_first('a'))
+    # print(a, b)
+    # print(graph.breadth_first('a'))
