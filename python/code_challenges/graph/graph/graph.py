@@ -1,3 +1,7 @@
+from graph.stacks_and_queues import Node, Queue
+# from stacks_and_queues import Node, Queue
+
+
 class Graph:
     def __init__(self):
         self._adjacency_list = {}
@@ -27,6 +31,29 @@ class Graph:
     def size(self):
         return len(self._adjacency_list)
 
+    def breadth_first(self, origin_vertex):
+        visited_vertices = []
+        vertex_queue = Queue()
+        i = 0
+        for vertex in self._adjacency_list:
+            if origin_vertex == vertex.value:
+                vertex_queue.enqueue(vertex)
+                break
+            i += 1
+            if i == self.size():
+                raise KeyError('Vertex not in graph')
+
+        j = 0
+        while j < self.size() + 1:
+            vertex = vertex_queue.dequeue()
+            if vertex.value not in visited_vertices:
+                visited_vertices.append(vertex.value)
+                for neighbor in self._adjacency_list[vertex]:
+                    vertex_queue.enqueue(neighbor.vertex)
+            j += 1
+
+        return visited_vertices
+
 
 class Vertex:
     def __init__(self, value):
@@ -47,7 +74,19 @@ if __name__ == '__main__':
     a = graph.add_node('a')
     b = graph.add_node('b')
     c = graph.add_node('c')
+    d = graph.add_node('d')
+    e = graph.add_node('e')
+    f = graph.add_node('f')
+    g = graph.add_node('g')
+    h = graph.add_node('h')
     graph.add_edge(a, b)
-    graph.add_edge(a, c, 2)
+    graph.add_edge(a, c)
+    graph.add_edge(b, d)
+    graph.add_edge(c, d)
+    graph.add_edge(a, e)
+    graph.add_edge(e, f)
+    graph.add_edge(e, g)
+    graph.add_edge(f, h)
     print(graph.get_neighbors(a))
     print(a, b)
+    print(graph.breadth_first('a'))
