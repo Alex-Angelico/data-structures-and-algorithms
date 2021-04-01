@@ -14,6 +14,10 @@ Create Graph, Vertex, and Edge classes which together allow for the construction
 
 Create a breadth-first traversal method for the graph class that accepts a vertex as an argument and returns all vertices in the graph in the appropriate order relative to the starting vertex.
 
+#### Challenge 37
+
+Write a function which takes in a graph of city names with edges weighed as plane ticket prices, and a list of city names. Return whether the trip between the cities is possible with direct flights, and how much it would cost.
+
 ### Inputs and Expected Outputs
 
 #### Challenge 35
@@ -37,6 +41,18 @@ B -> D (3)    |
 C -> D (4)    |
 A -> E (5)    | [A, B, C, E, D]
 
+#### Challenge 37
+
+Input | Expected Output
+----- | ---------------
+A, B, C, D, E |
+A -> B (1)    |
+A -> C (2)    |
+B -> D (3)    |
+C -> D (4)    |
+A -> E (5)    |
+['C', 'D']    | True, 4
+
 ### Big O
 
 #### Challenge 35
@@ -49,7 +65,13 @@ Space: O(N)
 Time: O(N^2)
 Space: O(N)
 
+#### Challenge 37
+
+Time: O(N^2)
+Space: O(N)
+
 ### Change Log
 
+1.1.5: *get_edges whiteboard complete, working on code* - 31 Mar 2021
 1.1: *Added breadth sort method* - 31 Mar 2021
 1.0: *Challenge complee* - 30 Mar 2021
