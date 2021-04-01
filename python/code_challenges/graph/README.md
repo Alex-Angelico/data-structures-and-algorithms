@@ -12,6 +12,8 @@ Create Graph, Vertex, and Edge classes which together allow for the construction
 
 #### Challenge 36
 
+Create a breadth-first traversal method for the graph class that accepts a vertex as an argument and returns all vertices in the graph in the appropriate order relative to the starting vertex.
+
 ### Inputs and Expected Outputs
 
 #### Challenge 35
@@ -28,12 +30,12 @@ C -> D (4) | B ----(3)---> D
 
 Input | Expected Output
 ----- | ---------------
-A, B, C, D |
-A -> B (1) |
-A -> C (2) |
-B -> D (3) |
-C -> D (4) |
-A -> E (5) | [A, B, C, E, D]
+A, B, C, D, E |
+A -> B (1)    |
+A -> C (2)    |
+B -> D (3)    |
+C -> D (4)    |
+A -> E (5)    | [A, B, C, E, D]
 
 ### Big O
 

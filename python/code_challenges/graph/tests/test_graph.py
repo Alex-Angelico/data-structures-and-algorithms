@@ -91,11 +91,14 @@ def test_single_node_edge():
     assert actual == expected
 
 
-def breadth_first(test_graph):
+def test_breadth_first(test_graph):
     assert test_graph.breadth_first(
         'a') == ['a', 'b', 'c', 'e', 'd', 'f', 'g', 'h']
 
 
-def breadth_first_fail(test_graph):
-    assert test_graph.breadth_first(
-        'i') == "KeyError: 'Vertex not in graph'"
+def test_breadth_first_fail(test_graph):
+    try:
+        test_graph.breadth_first('i')
+        assert False
+    except KeyError:
+        assert True
