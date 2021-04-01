@@ -64,20 +64,31 @@ define get_edges(graph, list):
 ## Code
 
 ```
-define get_edges(route_graph, city_list):
-  for index, city in enumerate(city_list):
-    if city not in graph:
-      raise KeyError('Vertex not in graph')
-    else:
-      list[index] = { city: city vertex object }
-  price = 0
+def get_edges(route_graph, city_list):
+    for index, city in enumerate(city_list):
+        i = 0
+        for vertex in route_graph._adjacency_list:
+            if city == vertex.value:
+                city_list[index] = {'city': city, 'vertex': vertex}
+                break
+            i += 1
+            if i == route_graph.size():
+                raise KeyError(f'{city} has no flights connecting to it.')
 
-  i = 0
-  while list[i+1]:
-    route_check = graph.get_neighbors(list[i].value)
-    if list[i+1].key in route_check.keys:
-      add weight to price
-    else return False
+    price = 0
 
-  return True, f'${price}'
+    i = 0
+    while i < len(city_list) - 1:
+        route_check = route_graph.get_neighbors(city_list[i]['vertex'])
+        j = 0
+        for destination in route_check:
+            if destination.get('Value') == city_list[i+1]['city']:
+                price += destination['Weight']
+                break
+            j += 1
+            if j == len(route_check):
+                return False, '$0'
+        i += 1
+
+    return True, f'${price}'
 ```
