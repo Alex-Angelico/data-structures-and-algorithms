@@ -13,7 +13,7 @@ from graph.graph import Graph, Vertex, Edge
         (['Pandora', 'Metroville', 'Narnia', 'Naboo'], (True, '$369'))
     ]
 )
-def test_get_edges(test_cities_graph, city_list, expected):
+def test_get_edges(city_list, expected):
     cities = Graph()
     metroville = cities.add_node('Metroville')
     pandora = cities.add_node('Pandora')
