@@ -92,8 +92,9 @@ Space: O(N)
 
 ### Change Log
 
+1.3: *Added depth_first sort method* - 06 Apr 2021
 1.2.5: *depth_first preliminary documentation mostly complete* - 05 Apr 2021
 1.2: *get_edges challenge complete* - 01 Apr 2021
 1.1.5: *get_edges whiteboard complete, working on code* - 31 Mar 2021
-1.1: *Added breadth sort method* - 31 Mar 2021
+1.1: *Added breadth_first sort method* - 31 Mar 2021
 1.0: *Challenge complee* - 30 Mar 2021
