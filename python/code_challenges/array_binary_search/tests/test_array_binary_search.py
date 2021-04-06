@@ -1,5 +1,5 @@
 import pytest
-from challenges.array_binary_search.array_binary_search import brute_search, binary_search, rec_binary_search
+from ..array_binary_search import brute_search, binary_search, rec_binary_search
 
 
 def test_brute_search_in():
@@ -35,4 +35,10 @@ def test_binary_search_out():
 def test_rec_binary_search_out():
     actual = rec_binary_search([11, 22, 33, 44, 55, 66, 77], 90)
     expected = -1
+    assert actual == expected
+
+
+def test_rec_binary_search_in_even():
+    actual = rec_binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9)
+    expected = 8
     assert actual == expected
