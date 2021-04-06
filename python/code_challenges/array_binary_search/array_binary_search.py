@@ -45,6 +45,7 @@ def rec_binary_search(sorted_list: list, search_int: int) -> int:
             return helper(mid_idx + 1, end_idx)
     return helper(0, len(sorted_list) - 1)
 
+
 # DRAFTS
 
 

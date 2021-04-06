@@ -102,3 +102,16 @@ def test_breadth_first_fail(test_graph):
         assert False
     except KeyError:
         assert True
+
+
+def test_depth_first(test_graph):
+    assert test_graph.depth_first(
+        'a') == ['a', 'b', 'd', 'c', 'e', 'f', 'h', 'g']
+
+
+def test_depth_first_fail(test_graph):
+    try:
+        test_graph.depth_first('i')
+        assert False
+    except KeyError:
+        assert True
