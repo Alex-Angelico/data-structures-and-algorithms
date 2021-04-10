@@ -1,4 +1,5 @@
 from graph.graph import Graph, Vertex, Edge
+# from graph import Graph, Vertex, Edge
 
 
 def get_edges(route_graph, city_list):
@@ -14,22 +15,21 @@ def get_edges(route_graph, city_list):
 
     price = 0
 
-    i = 0
-    while i < len(city_list) - 1:
-        route_check = route_graph.get_neighbors(city_list[i]['vertex'])
-        j = 0
+    j = 0
+    while j < len(city_list) - 1:
+        route_check = route_graph.get_neighbors(city_list[j]['vertex'])
+        k = 0
         for destination in route_check:
-            if destination.get('Value') == city_list[i+1]['city']:
+            # if destination.get('Value') == city_list[-1]['city']:
+            #     price += destination['Weight']
+            #     return True, f'${price}'
+            if destination.get('Value') == city_list[j+1]['city']:
                 price += destination['Weight']
                 break
-            # elif destination.get('Value') == city_list[-1]['city']:
-            #     price += destination['Weight']
-            #     i = len(city_list) - 1
-            #     break
-            j += 1
-            if j == len(route_check):
+            k += 1
+            if k == len(route_check):
                 return False, '$0'
-        i += 1
+        j += 1
 
     return True, f'${price}'
 
@@ -61,8 +61,8 @@ if __name__ == '__main__':
     cities.add_edge(narnia, naboo, 250)
     cities.add_edge(naboo, narnia, 250)
 
-    print(get_edges(cities, ['Arendelle', 'New Monstropolis', 'Naboo']))
-    print(get_edges(cities, ['Metroville', 'Pandora']))
-    print(get_edges(cities, ['Naboo', 'Pandora']))
-    print(get_edges(cities, ['Narnia', 'Arendelle', 'Naboo']))
+    # print(get_edges(cities, ['Arendelle', 'New Monstropolis', 'Naboo']))
+    # print(get_edges(cities, ['Metroville', 'Pandora']))
+    # print(get_edges(cities, ['Naboo', 'Pandora']))
+    # print(get_edges(cities, ['Narnia', 'Arendelle', 'Naboo']))
     print(get_edges(cities, ['Pandora', 'Metroville', 'Narnia', 'Naboo']))
