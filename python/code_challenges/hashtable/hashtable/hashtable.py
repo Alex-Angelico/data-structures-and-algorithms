@@ -12,9 +12,7 @@ class Hashtable:
         for character in key:
             sum += ord(character)
 
-        primed = sum * 599
-        index = primed % self._size
-        return index
+        return (sum * 599) % self._size 
 
     def add(self, key, value):
         hashed_key_index = self._hash(key)
