@@ -1,6 +1,6 @@
 from hashtable.hashtable import Hashtable
-from hashtable.hashtable import LinkedList
-
+from hashtable.linked_list import LinkedList
+import pytest
 
 def test_create():
     hashtable = Hashtable()
